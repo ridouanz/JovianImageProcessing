@@ -3,11 +3,11 @@ form{
 }
 
 .left_input {
-    border-bottom-left-radius: 20px;
-    border-top-left-radius: 20px;
+    height: 4rem;
     border: 0;
     outline: none;
-    
+    padding: 1rem;
+    color : rgb(89, 8, 42);
 }
 
 .right_input {
@@ -18,7 +18,21 @@ form{
     
 }
 
+.input_raw{
+    border: 1px solid #000;
+    margin : 2rem 0rem;
+}
 
+.validate_btn{
+    outline: none;
+    border: 0;
+    height: 4rem;
+    margin: 0;
+    background-color: rgb(89, 8, 42);
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+}
 .left {
     display: flex;
     align-items: center;
@@ -57,3 +71,7 @@ form{
     cursor: pointer;
 }
 
+button{
+    width: 20rem !important;
+    margin: .5rem;
+}

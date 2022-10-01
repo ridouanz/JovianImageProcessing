@@ -1,19 +1,43 @@
 
 
-<form #f="ngForm" (ngSubmit)="onSubmit(f)">
 
-    <input class="left_input" [hidden]="!isHidden1" />
-    <input class="right_input" [hidden]="!isHidden2" />
-
-</form>
-
-<div class="input_row d-flex flex-row">
-
-    <div class="left" [hidden]="isHidden1" >
-        Chercher par Image
-    </div>
-    <div class="right" [hidden]="isHidden2" (click)="isHidden1=true">
-        Chercher par nom
-    </div>
+<div>
 
 </div>
+<hr/>
+<div class="d-flex flex-raw justify-content-center align-items-center">
+    <button class="btn btn-primary" (click)="makeHide(1)">Search by Image</button>
+    <button class="btn btn-warning" (click)="makeHide(2)">Search by Name</button>
+</div>
+
+<form #f="ngForm" [hidden]="isHidden" (ngSubmit)="onSubmit(f)">
+
+    <div class="input_raw d-flex flex-raw justify-content-center align-items-center">
+        <input ngModel name="image_name" class="left_input col-8" placeholder="Enter image name here.."/>
+        <button class="validate_btn" type="submit">Validate</button>
+    </div>
+    
+
+</form>
+    
+<app-file-upload></app-file-upload>
+
+<p>hhhhh</p>
+<form #f="ngForm" >
+    <div class="input_raw d-flex flex-raw justify-content-center align-items-center">
+        <input ngModel type="file" name="image_name" class="left_input col-8" placeholder="Enter image name here.. "(change)=onChange($event)/>
+        <button class="validate_btn" type="submit" (click)="onUpload()">Validate</button>
+    </div>
+    </form>
+    <!-- Shareable short link of  uploaded file -->
+    <div class="container text-center jumbotron"
+        *ngIf="shortLink">
+        <h2> Visit Here</h2>
+        <a href="{{shortLink}}">{{shortLink}}</a>
+    </div>
+      
+    <!--Flag variable is used here-->
+    <div class="container" *ngIf="loading">
+        <h3>Loading ...</h3>
+    </div>
+

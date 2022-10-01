@@ -9,6 +9,7 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LeftPanelComponent } from './left-panel/left-panel.component';
 import { RightPanelComponent } from './right-panel/right-panel.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { RightPanelComponent } from './right-panel/right-panel.component';
     AccueilComponent,
     SearchComponent,
     LeftPanelComponent,
-    RightPanelComponent
+    RightPanelComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
