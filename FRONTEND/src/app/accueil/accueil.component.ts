@@ -19,21 +19,21 @@ export class AccueilComponent implements OnInit {
     const writer = new Typewriter(target, {
       loop: true,
       typeSpeed: 150,
-      deleteSpeed: 80,
+      deleteSpeed: 500,
       typeColor: '#fff',
     })
     
     writer
       .type('Welcome to JIP app')
       .rest(900)
-      .changeOps({ deleteSpeed: 200 })
+      .changeOps({ deleteSpeed: 100 })
       .clear()
       .type('Explore Jupiter with us')
       .rest(1000)
       .clear()
       .type('process images')
       .rest(1000)
-      .changeOps({ deleteSpeed: 200 })
+      .changeOps({ deleteSpeed: 100 })
       .clear()
       .type('image recoginition')
       .rest(1000)

@@ -18,6 +18,24 @@ form{
     
 }
 
+.button_option {
+    outline: none;
+    border: 0;
+    height: 4rem;
+    margin: 0;
+    
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: white;
+    color: rgb(89, 8, 42);
+    border: 1px solid rgb(89, 8, 42);
+}
+
+.active {
+    background-color: rgb(89, 8, 42);
+    color: #fff;
+}
+
 .input_raw{
     border: 1px solid #000;
     margin : 2rem 0rem;
@@ -74,4 +92,23 @@ form{
 button{
     width: 20rem !important;
     margin: .5rem;
+}
+
+.loader img {
+    height: 100px;
+    width: auto;
+}
+
+.loader_absolue  {
+    position: absolute;
+    z-index: 997;
+    background-color: rgba(255, 255, 255, 0.803);
+    top: 0;
+    bottom : 0;
+    left: 0;
+    right: 0;
+}
+.loader_absolue img {
+    
+    
 }
