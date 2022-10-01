@@ -1,0 +1,13 @@
+:root {
+    --a0: rgb(194, 238, 255);
+    --a1: rgb(219, 245, 255);
+    --a2: rgb(241, 247, 250);
+    
+
+    --white : #fff;
+  }
+body {
+    background-color: var(--a2);
+    box-sizing: border-box;
+   
+}
