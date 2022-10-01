@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { FormGroup, Validators} from '@angular/forms';
 import { FileUploadService } from '../services/file-upload.service';
+import { SearchService } from '../services/search.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -12,6 +13,7 @@ export class SearchComponent implements OnInit {
 
   btn1 : any ;
   btn2 : any ;
+  maTest : any;
   // Variable to store shortLink from api response
 	shortLink: string = "";
 	loading: boolean = false; // Flag variable
@@ -21,7 +23,7 @@ export class SearchComponent implements OnInit {
   isHidden2 = true;
 
   
-  constructor(private fileUploadService: FileUploadService) { }
+  constructor(private fileUploadService: FileUploadService, private sendImageIdService: SearchService) { }
 
   ngOnInit(): void {
     this.btn1 =  document.querySelector('.btn1');
@@ -60,8 +62,9 @@ export class SearchComponent implements OnInit {
 
   
   onSubmit(f: NgForm ) {
-    console.log(f.form.value)
-
+    console.log(f.form.value);
+    this.maTest = this.sendImageIdService.sendId(f.form.value);
+    console.log("*******************"+this.maTest);
   }
 
   onSubmit2(f: NgForm ) {
