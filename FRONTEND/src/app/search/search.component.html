@@ -1,0 +1,19 @@
+
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+    <input class="left_input" [hidden]="!isHidden1" />
+    <input class="right_input" [hidden]="!isHidden2" />
+
+</form>
+
+<div class="input_row d-flex flex-row">
+
+    <div class="left" [hidden]="isHidden1" >
+        Chercher par Image
+    </div>
+    <div class="right" [hidden]="isHidden2" (click)="isHidden1=true">
+        Chercher par nom
+    </div>
+
+</div>
