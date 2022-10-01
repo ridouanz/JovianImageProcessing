@@ -12,7 +12,7 @@ export class SearchService {
 
 
   sendId(id:String) {
-    return this.http.post(this.baseApiUrl+"/", id)
+    return this.http.get(this.baseApiUrl+"/"+id)
   }
 
 
