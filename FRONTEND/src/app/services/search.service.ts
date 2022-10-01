@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,11 @@ export class SearchService {
   constructor(private http : HttpClient) { }
 
 
-  sendId(id:String) {
-    return this.http.get(this.baseApiUrl+"/"+id)
+  sendId(id:String) : Observable<Object> {
+
+    return this.http.get<Object>(this.baseApiUrl+"/"+id).pipe(
+      map(result => {return result})
+    );
   }
 
 

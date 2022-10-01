@@ -63,8 +63,8 @@ export class SearchComponent implements OnInit {
   
   onSubmit(f: NgForm ) {
     console.log(f.form.value);
-    this.maTest = this.sendImageIdService.sendId(f.form.value);
-    console.log("*******************"+this.maTest);
+    this.maTest = this.sendImageIdService.sendId(f.form.value.image_name).subscribe(data => {console.log("*******************"+data)});
+  
   }
 
   onSubmit2(f: NgForm ) {
