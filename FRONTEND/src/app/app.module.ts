@@ -19,6 +19,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { GuideComponent } from './guide/guide.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     ProcessingComponent,
     AdvancedOpComponent,
     WelcomeComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    GuideComponent
   ],
   imports: [
     ShareButtonsModule,

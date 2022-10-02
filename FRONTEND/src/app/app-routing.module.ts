@@ -14,7 +14,8 @@ const routes: Routes = [
   {path: 'home', component: SearchComponent},
   { path: 'processing', title:'ProcessingPage', component: ProcessingComponent },
   { path: 'advanced',component: AdvancedOpComponent },
-  { path: 'about',component: AboutUsComponent }
+  { path: 'about',component: AboutUsComponent },
+  { path: 'advanced' , component: AdvancedOpComponent }
 ];
 
 @NgModule({
