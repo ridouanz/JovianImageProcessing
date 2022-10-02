@@ -10,6 +10,7 @@ export class ProcessingComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

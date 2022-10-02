@@ -16,6 +16,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ProcessingComponent } from './processing/processing.component';
 import { AdvancedOpComponent } from './advanced-op/advanced-op.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 @NgModule({
   declarations: [
@@ -29,9 +32,12 @@ import { WelcomeComponent } from './welcome/welcome.component';
     SanitizeHtmlPipe,
     ProcessingComponent,
     AdvancedOpComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    AboutUsComponent
   ],
   imports: [
+    ShareButtonsModule,
+    ShareIconsModule,
     HttpClientModule,
     BrowserModule,
     NgbModule,

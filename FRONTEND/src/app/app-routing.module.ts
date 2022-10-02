@@ -6,13 +6,15 @@ import { ProcessingComponent } from './processing/processing.component';
 import { AdvancedOpComponent } from './advanced-op/advanced-op.component';
 import { SearchComponent } from './search/search.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   {path: 'home', component: SearchComponent},
-  { path: 'processing', component: ProcessingComponent },
-  { path: 'advanced',component: AdvancedOpComponent }
+  { path: 'processing', title:'ProcessingPage', component: ProcessingComponent },
+  { path: 'advanced',component: AdvancedOpComponent },
+  { path: 'about',component: AboutUsComponent }
 ];
 
 @NgModule({

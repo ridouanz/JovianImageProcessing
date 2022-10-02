@@ -1,38 +1,86 @@
 
-<div class="parent d-flex flex-column justify-content-center align-items-center">
+<div class="parent pt-5">
+<div class=" d-flex flex-column justify-content-center align-items-center pt-5">
     
     <p>Below you can see the original input photo and the processesed one</p>
-    <div class="d-flex flex-row justify-content-around align-items-center">
+    <div class="  d-flex flex-row justify-content-around align-items-center">
         <div class="img img_before">
             <!-- static images to test the ui - will be replaced by links to images provided by backend-->
-            <img src="../../assets/data_images/2.jpeg">
+            <img src="../../assets/data_images/16111&ts=1656511106.png">
         </div>
         <div class="img img_after">
-            <img src="../../assets/data_images/1.jpeg">
+            <img src="../../assets/data_images/16111&ts=1656511106_processed.png">
         </div>
     </div>
 
    
     <div class="extra_options">
-        <form #f="ngForm">
+        <form #f="ngForm" class="d-flex flex-column justify-content-center align-items-center">
 
-            <div class=" input_raw d-flex flex-raw justify-content-start align-items-center">
-                <div>
-                    <input type="checkbox" id="scales" name="brightness" >
-                    <label for="brightness">More brightness</label>
+            <div class=" input_raw d-flex flex-raw justify-content-center align-items-center">
+                <div class="raw mr-3  col-md-4  d-flex flex-column justify-content-center align-items-start">
+                    <div>
+                        <input type="checkbox" id="scales" name="brightness" >
+                        <label for="brightness">Enhancing large/small storms</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="scales" name="contrast" >
+                        <label for="contrast">Enhancing lightness</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="scales" name="brightness" >
+                        <label for="brightness">Removing artifacts</label>
+                    </div>
+                  
                 </div>
-                <div>
-                    <input type="checkbox" id="scales" name="contrast" >
-                    <label for="contrast">More contrast</label>
+                <div class="raw  col-md-4">
+                    <div>
+                        <input type="checkbox" id="scales" name="brightness" >
+                        <label for="brightness">Enhancing contrast</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="scales" name="contrast" >
+                        <label for="contrast">Denoising</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="scales" name="contrast" >
+                        <label for="contrast">Visualize RGB</label>
+                    </div>
+                 
                 </div>
-                <div>
-                    <input type="checkbox" id="scales" name="RGB" >
-                    <label for="RGB">RGB</label>
+                <!-- <div class="raw">
+                    <div>
+                        <input type="checkbox" id="scales" name="brightness" >
+                        <label for="brightness">Removing artifacts</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="scales" name="contrast" >
+                        <label for="contrast">Visualize RGB</label>
+                    </div>
+               
+                </div> -->
+                <div class=" raw col-md-4">
+                    <button class="button regenerate_btn" type="submit" >Regenerate Image</button>
+                    <button class="button options_btn"  >Advanced options</button>
                 </div>
-
-
-                <button class="validate_btn" type="submit" >Regenerate Image</button>
             </div>
+               
         </form>
     </div>
+    <div class=" d-flex flex-column justify-content-start align-items-center extra_options">
+        <p class="pt-1"><span>Download</span> or Share on social media :</p>
+    <share-buttons pt-0 theme="modern-dark"
+    [include]="['copy', 'facebook', 'email', 'messenger',  'linkedin', 'pinterest', 'reddit', 'sms', 'telegram' ,'twitter', 'whatsapp']"
+    [showIcon]="true"
+    [showText]="false"
+    url="localhsot:8000/process"
+    description="Angular Share Buttons"
+    twitterAccount="rodrigokamada"
+    class="pt-5">
+  </share-buttons>
+</div>
+ 
+</div>
+
+
 </div>

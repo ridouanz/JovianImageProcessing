@@ -2,6 +2,9 @@ form{
     width: 100%;
 }
 
+.parent {
+    height: 100%;
+}
 .left_input {
     height: 4rem;
     border: 0;

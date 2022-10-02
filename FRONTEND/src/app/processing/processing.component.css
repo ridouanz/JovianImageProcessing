@@ -1,3 +1,14 @@
+.parent{
+    margin: 1rem;
+    width:100%;
+    height: max-content;
+    
+    padding: 1rem;
+    
+}
+share-buttons {
+    padding-top: 0 !important ;
+}
 
 .img {
     border: 1px dashed rgb(89, 8, 42);
@@ -22,42 +33,44 @@
 }
 
 .input_raw input {
-    width: 1rem !important;
-    height: 1rem !important;
-    margin: .4rem;
+    
+    width: .9rem !important;
+    height: .9rem !important;
+    margin: .2rem;
     accent-color: rgb(89, 8, 42);
     cursor: pointer;
+    margin-left: 1rem;
 }
 
 .input_raw label {
    
-    margin-right: 1rem;
+    margin-right: .4rem;
+    font-size: .9rem;
     accent-color: rgb(89, 8, 42);
     cursor: pointer;
+    font-weight: 500;
 }
 
-.validate_btn {
+.regenerate_btn,.options_btn {
+    min-width: 190px;
     outline: none;
     border: 0;
     padding: .5rem 1rem;
-    margin: .4rem;
+    margin: .1rem;
     background-color:rgb(89, 8, 42);
-    font-size: 1rem;
+    font-size: .8rem;
     font-weight: 600;
     color: white;
     transition: ease-in-out .3s all;
-    margin-left: 2rem;
+    margin-left: .9rem;
 }
-.validate_btn:hover {
-    outline: none;
-    border: 0;
-    padding: .5rem 1rem;
-    margin: .4rem;
-    background-color:rgb(89, 8, 42);
-    box-shadow: 1px 2px 5px 0px #ccc;
-    font-size: 1rem;
-    font-weight: 600;
-    color: white;
-    transition: ease-in-out .2s all;
-   
+
+p span{
+    color: rgb(89, 8, 42);
+    font-weight: 700;
+    background-color:rgba(89, 8, 42, 0.126); 
+    padding: .3rem 1rem;
+    border-radius: 30px;
+    cursor: pointer;
 }
+

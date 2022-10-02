@@ -3,7 +3,8 @@ import { NgForm } from '@angular/forms';
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { FileUploadService } from '../services/file-upload.service';
 import { SearchService } from '../services/search.service';
-import { SanitizeHtmlPipe } from '../shared/SynitizeHtmlPipe';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -25,7 +26,7 @@ export class SearchComponent implements OnInit {
   isHidden2 = true;
 
   
-  constructor(private sanitizer: DomSanitizer,private fileUploadService: FileUploadService, private sendImageIdService: SearchService) { }
+  constructor(private router:Router ,private sanitizer: DomSanitizer,private fileUploadService: FileUploadService, private sendImageIdService: SearchService) { }
 
   ngOnInit(): void {
     
@@ -62,6 +63,7 @@ export class SearchComponent implements OnInit {
   // OnClick of button Upload
 	onUpload() {
 		this.loading = !this.loading;
+    this.router.navigate(['ProcessingComponent'])
 		console.log(this.file);
 		this.fileUploadService.upload(this.file).subscribe(
 			(event: any) => {
@@ -69,7 +71,8 @@ export class SearchComponent implements OnInit {
 
 					// Short link via api response
 					this.shortLink = event.link;
-
+          
+          this.router.navigateByUrl('/processing');
 					this.loading = false; // Flag variable
 				}
 			}
@@ -78,11 +81,14 @@ export class SearchComponent implements OnInit {
 
   
   onSubmit(f: NgForm ) {
+
     this.loading = !this.loading;
+    
     this.sendImageIdService.sendId(f.form.value.image_name).subscribe(data => { 
       if (typeof (data) === 'object') {
     this.returned_img = data.img.toString();
     this.updateUrl("");
+    this.router.navigateByUrl('/processing');
     this.loading = false; 
   
   }});
