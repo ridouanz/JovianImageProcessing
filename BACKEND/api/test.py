@@ -12,6 +12,8 @@ sys.path.append(str(parent_path))
 
 from src import ImageLoader, ImageProcessor
 
+parent_path = pathlib.Path(os.path.realpath(__file__)).parent.parent.parent
+sys.path.append(str(parent_path))
 app = FastAPI()
 
 #fix the Cross-Origin Resource Sharing with angular
@@ -38,9 +40,8 @@ def read_root():
 def read_item(img_id : str):
     img_raw = ImageLoader(img_id).load()
     img_processed = ImageProcessor(img_id).enhance()
-    cv.imwrite(f"{str(parent_path)}/data/raw/{img_id}.png", img_raw)
-    cv.imwrite(f"{str(parent_path)}/data/processed/{img_id}.png", img_processed)
-    
-    return {"img_raw": f"{str(parent_path)}/data/raw/{img_id}.png", 
-    "img_processed" : f"{str(parent_path)}/data/processed/{img_id}.png"
-    }
+    ##cv.imwrite(f"{str(parent_path)}/data/raw/{img_id}.png", img_raw)
+    ##cv.imwrite(f"{str(parent_path)}/data/processed/{img_id}.png", img_processed)
+
+    cv.imwrite(f"{str(parent_path)}/FRONTEND/src/assets/dataProcess/{img_id}_edited.png", img_processed)
+    return {"img": f"{img_id}_edited.png"}
