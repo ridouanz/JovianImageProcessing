@@ -12,6 +12,10 @@ import { RightPanelComponent } from './right-panel/right-panel.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SanitizeHtmlPipe } from './shared/SynitizeHtmlPipe';
+import { AppRoutingModule } from './app-routing.module';
+import { ProcessingComponent } from './processing/processing.component';
+import { AdvancedOpComponent } from './advanced-op/advanced-op.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +26,18 @@ import { SanitizeHtmlPipe } from './shared/SynitizeHtmlPipe';
     LeftPanelComponent,
     RightPanelComponent,
     FileUploadComponent,
-    SanitizeHtmlPipe
+    SanitizeHtmlPipe,
+    ProcessingComponent,
+    AdvancedOpComponent,
+    WelcomeComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

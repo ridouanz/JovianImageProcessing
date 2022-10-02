@@ -1,0 +1,38 @@
+
+<div class="parent d-flex flex-column justify-content-center align-items-center">
+    
+    <p>Below you can see the original input photo and the processesed one</p>
+    <div class="d-flex flex-row justify-content-around align-items-center">
+        <div class="img img_before">
+            <!-- static images to test the ui - will be replaced by links to images provided by backend-->
+            <img src="../../assets/data_images/2.jpeg">
+        </div>
+        <div class="img img_after">
+            <img src="../../assets/data_images/1.jpeg">
+        </div>
+    </div>
+
+   
+    <div class="extra_options">
+        <form #f="ngForm">
+
+            <div class=" input_raw d-flex flex-raw justify-content-start align-items-center">
+                <div>
+                    <input type="checkbox" id="scales" name="brightness" >
+                    <label for="brightness">More brightness</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="scales" name="contrast" >
+                    <label for="contrast">More contrast</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="scales" name="RGB" >
+                    <label for="RGB">RGB</label>
+                </div>
+
+
+                <button class="validate_btn" type="submit" >Regenerate Image</button>
+            </div>
+        </form>
+    </div>
+</div>

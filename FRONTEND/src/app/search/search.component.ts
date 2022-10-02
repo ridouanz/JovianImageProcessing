@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { FileUploadService } from '../services/file-upload.service';
 import { SearchService } from '../services/search.service';
 import { SanitizeHtmlPipe } from '../shared/SynitizeHtmlPipe';
@@ -28,6 +28,7 @@ export class SearchComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer,private fileUploadService: FileUploadService, private sendImageIdService: SearchService) { }
 
   ngOnInit(): void {
+    
     this.btn1 =  document.querySelector('.btn1');
     this.btn2  =  document.querySelector('.btn2');
   }
