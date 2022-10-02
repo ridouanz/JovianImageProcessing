@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { FileUploadService } from '../services/file-upload.service';
 import { SearchService } from '../services/search.service';
 import { SanitizeHtmlPipe } from '../shared/SynitizeHtmlPipe';
@@ -15,6 +16,7 @@ export class SearchComponent implements OnInit {
   btn2 : any ;
   //variables to store API response
   returned_img :String = "";
+  trustedUrl:any;
 	shortLink: string = "";
 	loading: boolean = false; // Flag variable
 	file : any;// Variable to store file
@@ -23,13 +25,22 @@ export class SearchComponent implements OnInit {
   isHidden2 = true;
 
   
-  constructor(private fileUploadService: FileUploadService, private sendImageIdService: SearchService) { }
+  constructor(private sanitizer: DomSanitizer,private fileUploadService: FileUploadService, private sendImageIdService: SearchService) { }
 
   ngOnInit(): void {
     this.btn1 =  document.querySelector('.btn1');
     this.btn2  =  document.querySelector('.btn2');
   }
 
+  updateUrl(id: string) {
+    // Appending an ID to a YouTube URL is safe.
+    // Always make sure to construct SafeValue objects as
+    // close as possible to the input data so
+    // that it's easier to check if the value is safe.
+    this.returned_img =  this.returned_img + id;
+    this.trustedUrl =
+        this.sanitizer.bypassSecurityTrustResourceUrl(this.returned_img.toString());
+  }
   // On file Select
 	onChange(event : any) {
 		this.file = event.target.files[0];
@@ -70,6 +81,7 @@ export class SearchComponent implements OnInit {
     this.sendImageIdService.sendId(f.form.value.image_name).subscribe(data => { 
       if (typeof (data) === 'object') {
     this.returned_img = data.img.toString();
+    this.updateUrl("");
     this.loading = false; 
   
   }});
