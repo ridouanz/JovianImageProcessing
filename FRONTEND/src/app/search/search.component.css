@@ -108,7 +108,7 @@ button{
     left: 0;
     right: 0;
 }
-.loader_absolue img {
-    
-    
+.test img {
+    height: 80px;
+    width: auto;
 }

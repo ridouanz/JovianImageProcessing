@@ -11,11 +11,11 @@
 </div>
 
 
-<form #f="ngForm" [hidden]="isHidden" (ngSubmit)="onSubmit(f)">
+<form #f="ngForm" [hidden]="isHidden" >
 
     <div class="input_raw d-flex flex-raw justify-content-center align-items-center">
         <input ngModel name="image_name" class="left_input col-8" placeholder="Enter image name here.."/>
-        <button class="validate_btn" type="submit">Validate</button>
+        <button class="validate_btn" type="submit" (click)="onSubmit(f)">Validate</button>
     </div>
     
 
@@ -27,16 +27,18 @@
         <button class="validate_btn" type="submit" (click)="onUpload()">Upload</button>
     </div>
     </form>
-    <!-- Shareable short link of  uploaded file -->
+
     <div class="container text-center jumbotron"
         *ngIf="shortLink">
         <h2> Visit Here</h2>
         <a href="{{shortLink}}">{{shortLink}}</a>
     </div>
       
-    
+    <div class="test d-flex flex-raw justify-content-center align-items-center" *ngIf="returned_img">
+        <img src="{{returned_img}}">
+    </div>
 
-    <div class="loader_absolue d-flex flex-raw justify-content-center align-items-center" *ngIf="loading">
+    <div class="loader_absolue d-flex flex-raw justify-content-center align-items-center" *ngIf="loading ">
         <img src="../../assets/AmusedEnergeticDassie-size-res-unscreen.gif">
     </div>
 

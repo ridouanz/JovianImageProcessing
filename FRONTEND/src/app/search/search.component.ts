@@ -13,8 +13,8 @@ export class SearchComponent implements OnInit {
 
   btn1 : any ;
   btn2 : any ;
-  maTest : any;
-  // Variable to store shortLink from api response
+  //variables to store API response
+  returned_img :string = "";
 	shortLink: string = "";
 	loading: boolean = false; // Flag variable
 	file : any;// Variable to store file
@@ -62,10 +62,16 @@ export class SearchComponent implements OnInit {
 
   
   onSubmit(f: NgForm ) {
+    this.loading = !this.loading;
     console.log(f.form.value);
-    this.maTest = this.sendImageIdService.sendId(f.form.value.image_name).subscribe(data => {console.log("*******************"+data)});
-  
+   this.sendImageIdService.sendId(f.form.value.image_name).subscribe(data => { 
+    
+    this.returned_img = data.img.toString()});
+
+    this.loading = false; 
+
   }
+  
 
   onSubmit2(f: NgForm ) {
     console.log(f.form.value)
