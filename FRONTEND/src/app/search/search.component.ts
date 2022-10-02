@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FileUploadService } from '../services/file-upload.service';
 import { SearchService } from '../services/search.service';
+import { SanitizeHtmlPipe } from '../shared/SynitizeHtmlPipe';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+
 
   btn1 : any ;
   btn2 : any ;

@@ -11,6 +11,7 @@ import { LeftPanelComponent } from './left-panel/left-panel.component';
 import { RightPanelComponent } from './right-panel/right-panel.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SanitizeHtmlPipe } from './shared/SynitizeHtmlPipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     SearchComponent,
     LeftPanelComponent,
     RightPanelComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    SanitizeHtmlPipe
   ],
   imports: [
     HttpClientModule,
