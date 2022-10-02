@@ -1,5 +1,5 @@
 
-.download {
+.img {
     border: 1px dashed rgb(89, 8, 42);
     width: auto;
     height: 135px;
@@ -7,7 +7,7 @@
 
 }
 
-.download img{
+.img img{
     width: auto;
     height: 100px;
 }
