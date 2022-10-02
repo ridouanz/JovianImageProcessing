@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { FormControl } from '@angular/forms';
-import { FormGroup, Validators} from '@angular/forms';
 import { FileUploadService } from '../services/file-upload.service';
 import { SearchService } from '../services/search.service';
 @Component({
@@ -14,7 +12,7 @@ export class SearchComponent implements OnInit {
   btn1 : any ;
   btn2 : any ;
   //variables to store API response
-  returned_img :string = "";
+  returned_img :String = "";
 	shortLink: string = "";
 	loading: boolean = false; // Flag variable
 	file : any;// Variable to store file
@@ -34,6 +32,10 @@ export class SearchComponent implements OnInit {
 	onChange(event : any) {
 		this.file = event.target.files[0];
 	}
+
+  getLink() {
+    return this.returned_img.toString();
+  }
 
   myFunction(e:any) {
     var elems = document.querySelectorAll(".active");
@@ -63,9 +65,6 @@ export class SearchComponent implements OnInit {
   
   onSubmit(f: NgForm ) {
     this.loading = !this.loading;
-  //   setTimeout(()=> {},3000)
-  //  console.log("kkk "+this.loading);
-  //  console.log(f.form.value);
     this.sendImageIdService.sendId(f.form.value.image_name).subscribe(data => { 
       if (typeof (data) === 'object') {
     this.returned_img = data.img.toString();
@@ -98,3 +97,6 @@ export class SearchComponent implements OnInit {
     }
   }
 }
+
+
+
