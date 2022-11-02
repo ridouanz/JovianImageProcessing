@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FileUploadService } from '../services/file-upload.service';
 import { SearchService } from '../services/search.service';
 import { Router } from '@angular/router';
+import { ImageResponse } from '../shared/image-response';
+import { ParentService } from '../services/parent.service';
+import { faList } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-search',
@@ -16,8 +19,11 @@ export class SearchComponent implements OnInit {
   btn1 : any ;
   btn2 : any ;
   //variables to store API response
-  returned_img :String = "";
-  trustedUrl:any;
+  resp_after_processing : ImageResponse | undefined ;
+  trustedUrl_old:any;
+  trustedUrl_new:any;
+  urlToTrust_old = "../../assets/";
+  urlToTrust_new = "../../assets/";
 	shortLink: string = "";
 	loading: boolean = false; // Flag variable
 	file : any;// Variable to store file
@@ -26,7 +32,7 @@ export class SearchComponent implements OnInit {
   isHidden2 = true;
 
   
-  constructor(private router:Router ,private sanitizer: DomSanitizer,private fileUploadService: FileUploadService, private sendImageIdService: SearchService) { }
+  constructor(private sharedService:ParentService,private router:Router ,private sanitizer: DomSanitizer,private fileUploadService: FileUploadService, private sendImageIdService: SearchService) { }
 
   ngOnInit(): void {
     
@@ -39,9 +45,18 @@ export class SearchComponent implements OnInit {
     // Always make sure to construct SafeValue objects as
     // close as possible to the input data so
     // that it's easier to check if the value is safe.
-    this.returned_img =  this.returned_img + id;
-    this.trustedUrl =
-        this.sanitizer.bypassSecurityTrustResourceUrl(this.returned_img.toString());
+    let list : [string,string,SafeResourceUrl,SafeResourceUrl] ;
+    
+    this.urlToTrust_old =  this.urlToTrust_old + this.resp_after_processing?.old + id;
+    this.urlToTrust_new =  this.urlToTrust_new + this.resp_after_processing?.new + id;
+    this.trustedUrl_old =
+        this.sanitizer.bypassSecurityTrustResourceUrl(this.urlToTrust_old.toString());
+    this.trustedUrl_new =
+        this.sanitizer.bypassSecurityTrustResourceUrl(this.urlToTrust_new.toString());  
+    list = [this.urlToTrust_old,this.urlToTrust_new,this.trustedUrl_old,this.trustedUrl_new];
+     
+    this.sharedService.updateImagesInComponents(list);
+    
   }
   // On file Select
 	onChange(event : any) {
@@ -49,7 +64,7 @@ export class SearchComponent implements OnInit {
 	}
 
   getLink() {
-    return this.returned_img.toString();
+    return this.urlToTrust_old.toString();
   }
 
   myFunction(e:any) {
@@ -85,11 +100,12 @@ export class SearchComponent implements OnInit {
     this.loading = !this.loading;
     
     this.sendImageIdService.sendId(f.form.value.image_name).subscribe(data => { 
-      if (typeof (data) === 'object') {
-    this.returned_img = data.img.toString();
-    this.updateUrl("");
+    if (typeof (data) === 'object') {
+    this.resp_after_processing = data;
+    this.updateUrl(data.old);
     this.router.navigateByUrl('/processing');
     this.loading = false; 
+    
   
   }});
 
@@ -99,7 +115,7 @@ export class SearchComponent implements OnInit {
   
 
   onSubmit2(f: NgForm ) {
-    console.log(f.form.value)
+    
 
   }
 

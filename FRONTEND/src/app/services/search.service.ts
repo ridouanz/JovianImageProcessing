@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { ImageId } from '../shared/image-id';
+import { ImageResponse } from '../shared/image-response';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,10 @@ export class SearchService {
   constructor(private http : HttpClient) { }
 
 
-  sendId(id:String) : Observable<ImageId> {
+  sendId(id:String) : Observable<ImageResponse> {
 
-    return this.http.get<ImageId>(this.baseApiUrl+"/"+id).pipe(
-      map(result => {return result})
+    return this.http.post<ImageResponse>(this.baseApiUrl,id).pipe(
+      tap(e => console.log(e.old))
     );
   }
 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ParentService } from '../services/parent.service';
 
 @Component({
   selector: 'app-right-panel',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RightPanelComponent implements OnInit {
 
-  constructor() { }
+  
+
+  constructor(private parent:ParentService) {}
 
   ngOnInit(): void {
+    
   }
+
+
 
 }

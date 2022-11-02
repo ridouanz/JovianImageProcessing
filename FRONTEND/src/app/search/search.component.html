@@ -34,8 +34,8 @@
         <a href="{{shortLink}}">{{shortLink}}</a>
     </div>
       
-    <div class="test d-flex flex-raw justify-content-center align-items-center" *ngIf="returned_img">
-        <img [src]="trustedUrl">
+    <div class="test d-flex flex-raw justify-content-center align-items-center" *ngIf="resp_after_processing">
+        <img [src]="trustedUrl_old">
     </div>
 
     <div class="loader_absolue d-flex flex-raw justify-content-center align-items-center" *ngIf="loading">

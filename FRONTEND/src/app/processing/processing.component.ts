@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SafeResourceUrl } from '@angular/platform-browser';
+import { ParentService } from '../services/parent.service';
 
 @Component({
   selector: 'app-processing',
@@ -7,10 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProcessingComponent implements OnInit {
 
-  constructor() { }
+   list : any;
+   process_old : SafeResourceUrl | undefined ;
+   process_new : SafeResourceUrl | undefined;
 
+  constructor(private sharedService : ParentService) { 
+  }
+
+
+  
   ngOnInit(): void {
-    
+    this.setProcessImgProperties();
+  }
+
+  setProcessImgProperties() {
+
+    this.list = this.sharedService.getImagesTrustedLinks();
+    this.process_old = this.list[1];
+    this.process_new = this.list[3];
   }
 
 }
