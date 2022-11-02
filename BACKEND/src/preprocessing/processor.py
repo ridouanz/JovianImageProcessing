@@ -7,8 +7,32 @@ class ImageProcessor(ImageLoader):
     def __init__(self, id: str):
         super().__init__(id)
         self.img = self.load()
+    
+    def enhance(self, clipLimit = 10.0, window = 50, sharpen=True):
 
-    def enhance(self, clipLimit = 10.0, window = 50, denoising = True, sharpen=True):
+        sharpen_kernel = np.array([[0, -1, 0],
+                        [-1, 5, -1],
+                        [0, -1, 0]])
+
+
+        clahe = cv.createCLAHE(clipLimit = clipLimit, tileGridSize = (window, window))
+
+        img_result = np.zeros(self.img.shape)
+
+        img_result[:,:,0] = clahe.apply(self.img[:,:,0])
+        img_result[:,:,1] = clahe.apply(self.img[:,:,1])
+        img_result[:,:,2] = clahe.apply(self.img[:,:,2])
+
+
+        #img_result = median_filter(img_result.astype('uint8'), 3)
+        img_result = img_result.astype("uint8")
+        img_result= cv.bilateralFilter(img_result, 3, 51, 51)
+    
+        if sharpen :
+            img_result[:,:,2] = cv.filter2D(src=img_result[:,:,2], ddepth=-1, kernel=sharpen_kernel)
+        return img_result
+
+    def enhance_2(self, clipLimit = 10.0, window = 50, denoising = True, sharpen=True):
         sharpen_kernel = np.array([[0, -1, 0],
                         [-1, 5, -1],
                         [0, -1, 0]])
@@ -20,7 +44,9 @@ class ImageProcessor(ImageLoader):
         img_result[:,:,1] = clahe.apply(self.img[:,:,1])
         img_result[:,:,2] = clahe.apply(self.img[:,:,2])
 
-        img_result = median_filter(img_result.astype('uint8'), 3)
+        #img_result = median_filter(img_result.astype('uint8'), 3)
+        img_result = img_result.astype("uint8")
+        img_result = cv.bilateralFilter(img_result, 9, 41, 41)
 
         if denoising :
             img_result = cv.fastNlMeansDenoisingColored(img_result, None, 3, 3)
