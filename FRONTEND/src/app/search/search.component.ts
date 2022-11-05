@@ -99,8 +99,11 @@ export class SearchComponent implements OnInit {
   onSubmit(f: NgForm ) {
 
     this.loading = !this.loading;
-    
-    this.sendImageIdService.sendId(f.form.value.image_name).subscribe(data => { 
+   let imageId : ImageId | undefined;
+   imageId = {
+    img : f.form.value.image_name
+   }
+    this.sendImageIdService.sendId(imageId).subscribe(data => { 
     if (typeof (data) === 'object') {
     this.resp_after_processing = data;
     this.updateUrl(data.old);
