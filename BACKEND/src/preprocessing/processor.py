@@ -4,9 +4,9 @@ import cv2 as cv
 from scipy.ndimage import median_filter
 
 class ImageProcessor(ImageLoader):
-    def __init__(self, id: str):
-        super().__init__(id)
-        self.img = self.load()
+    def __init__(self, id: str = None, img : np.array = None):
+        super().__init__(id, img)
+        self.image = self.load()
     
     def enhance(self, clipLimit = 10.0, window = 50, sharpen=True):
 
@@ -17,7 +17,7 @@ class ImageProcessor(ImageLoader):
 
         clahe = cv.createCLAHE(clipLimit = clipLimit, tileGridSize = (window, window))
 
-        img_result = np.zeros(self.img.shape)
+        img_result = np.zeros(self.image.shape)
 
         img_result[:,:,0] = clahe.apply(self.img[:,:,0])
         img_result[:,:,1] = clahe.apply(self.img[:,:,1])
@@ -26,7 +26,7 @@ class ImageProcessor(ImageLoader):
 
         #img_result = median_filter(img_result.astype('uint8'), 3)
         img_result = img_result.astype("uint8")
-        img_result= cv.bilateralFilter(img_result, 3, 51, 51)
+        img_result= cv.bilateralFilter(img_result, 3, 31, 31)
     
         if sharpen :
             img_result[:,:,2] = cv.filter2D(src=img_result[:,:,2], ddepth=-1, kernel=sharpen_kernel)

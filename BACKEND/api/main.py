@@ -1,11 +1,13 @@
 from tkinter import Image
 from typing import Union
 import cv2 as cv
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, File
 import pathlib
 import os
 import sys
 from fastapi.middleware.cors import CORSMiddleware
+import numpy as np 
+from PIL import Image
 
 parent_path = pathlib.Path(os.path.realpath(__file__)).parent.parent
 sys.path.append(str(parent_path))
@@ -29,15 +31,32 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.get("/")
 def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/process/{img_id}")
-def read_item(img_id : str):
-    img_raw = ImageLoader(img_id).load()
-    img_processed = ImageProcessor(img_id).enhance()
+@app.post("/process_by_link/")
+async def process_img_by_link(img_file : UploadFile= File(...)):
+    img = await img_file.read()
+    arr = np.asarray(bytearray(img), dtype=np.uint8)
+    img = cv.imdecode(arr, -1) # 'Load it as it is'
+
+
+    img_processed = ImageProcessor(img = img).enhance()
+    cv.imwrite(f"{str(parent_path)}/data/raw/test.png", img)
+    cv.imwrite(f"{str(parent_path)}/data/processed/test.png", img_processed)
+    
+    return {"img_raw": f"{str(parent_path)}/data/raw/test.png", 
+    "img_processed" : f"{str(parent_path)}/data/processed/test.png"
+    }
+
+
+@app.get("/process_by_id/{img_id}")
+def process_img_by_id(img_id : str):
+    img_raw = ImageLoader(id = img_id).load()
+    img_processed = ImageProcessor(id = img_id).enhance()
     cv.imwrite(f"{str(parent_path)}/data/raw/{img_id}.png", img_raw)
     cv.imwrite(f"{str(parent_path)}/data/processed/{img_id}.png", img_processed)
     

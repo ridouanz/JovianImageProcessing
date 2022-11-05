@@ -7,19 +7,25 @@ from urllib.request import Request, urlopen
 
 
 class ImageLoader():
-    def __init__(self, id = None):
+    def __init__(self, id : str = None, img: np.array = None):
         """
         id should be in ' ' not in " " 
         """
-        self.link = f"https://www.missionjuno.swri.edu/Vault/VaultOutput?VaultID={id}"
-
+        self.id = id
+        self.img = img
+        
+        if self.id is not None:
+            self.url = f"https://www.missionjuno.swri.edu/Vault/VaultOutput?VaultID={id}"
+        
     def load(self):
-        req = Request(
-        url= self.link, 
-        headers={'User-Agent': 'Mozilla/5.0'}
-        )
-        webpage = urlopen(req).read()
-        arr = np.asarray(bytearray(webpage), dtype=np.uint8)
-        img = cv2.imdecode(arr, -1) # 'Load it as it is'
-        return img
-
+        if self.id is not None:
+            req = Request(
+            url= self.url, 
+            headers={'User-Agent': 'Mozilla/5.0'}
+            )
+            webpage = urlopen(req).read()
+            arr = np.asarray(bytearray(webpage), dtype=np.uint8)
+            img = cv2.imdecode(arr, -1) # 'Load it as it is'
+            return img
+        elif self.img is not None:
+            return self.img
