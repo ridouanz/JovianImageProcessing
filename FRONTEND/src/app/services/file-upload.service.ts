@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 export class FileUploadService {
 	
 // API url
-baseApiUrl = "https://localhost:8000/process"
+baseApiUrl = "http://localhost:8000/files"
 	
 constructor(private http:HttpClient) { }
 
