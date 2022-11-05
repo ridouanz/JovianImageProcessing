@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ImageResponse } from '../shared/image-response';
 import { ParentService } from '../services/parent.service';
 import { faList } from '@fortawesome/free-solid-svg-icons';
+import {ImageId} from '../shared/image-id';
 
 @Component({
   selector: 'app-search',
