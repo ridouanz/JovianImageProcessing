@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-COPY  . .
+COPY  . /JovianImageProcessing
 
 RUN pwd
 RUN ls -al .
