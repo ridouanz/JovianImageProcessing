@@ -21,7 +21,7 @@ export class ParentService {
     let urlToTrust_new_tmp =  this.urlToTrust_new + resp_after_processing?.new + "";
 
     let trustedUrl_old =
-        this.sanitizer.bypassSecurityTrustResourceUrl(urlToTrust_old_tmp.toString());
+        this.sanitizer.bypassSecurityTrustResourceUrl(this.urlToTrust_old.toString());
    let trustedUrl_new =
         this.sanitizer.bypassSecurityTrustResourceUrl(urlToTrust_new_tmp.toString());  
         trustedLinks= [trustedUrl_old,trustedUrl_new];
@@ -33,7 +33,7 @@ export class ParentService {
       this.list = list;
   } 
 
-  
+
   getImagesTrustedLinks() {
     return this.list;
   }
