@@ -11,7 +11,7 @@ WORKDIR $BACKEND
 
 RUN apt-get install -y python3 
 RUN apt-get install -y python3-pip 
-RUN apt-get install -y python3-tk
+RUN apt-get install -y python3-tk 1
 RUN pwd
 RUN pip install -r requirements.txt
 
