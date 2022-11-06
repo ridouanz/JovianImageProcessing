@@ -41,6 +41,5 @@ class ImageLoader():
             return img
         elif self.img is not None:
             img = Utils().decode(img_coded=self.img)
-
             return img
 
