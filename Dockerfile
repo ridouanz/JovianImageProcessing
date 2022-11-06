@@ -2,8 +2,8 @@ FROM ubuntu:latest
 
 COPY  . .
 
-ENV BACKEND=JovianImageProcessing/BACKEND
-ENV FRONTEND=JovianImageProcessing/FRONTEND
+ENV BACKEND=./JovianImageProcessing/BACKEND
+ENV FRONTEND=./JovianImageProcessing/FRONTEND
 
 RUN apt-get update && apt-get -y upgrade
 
