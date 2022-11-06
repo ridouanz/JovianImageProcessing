@@ -3,7 +3,7 @@ FROM ubuntu:latest
 COPY  . .
 
 RUN pwd
-
+RUN cat /JovianImageProcessing/BACKEND/requirements.txt
 ENV BACKEND=/JovianImageProcessing/BACKEND
 ENV FRONTEND=/JovianImageProcessing/FRONTEND
 
@@ -11,10 +11,9 @@ RUN apt-get update && apt-get -y upgrade
 
 WORKDIR $BACKEND
 
-RUN pwd
-
 RUN apt-get install -y python3 
 RUN apt-get install -y python3-pip 
+RUN pwd
 RUN pip install -r /JovianImageProcessing/BACKEND/requirements.txt
 
 WORKDIR $FRONTEND
