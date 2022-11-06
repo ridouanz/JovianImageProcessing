@@ -10,7 +10,7 @@ RUN apt-get update && apt-get -y upgrade
 WORKDIR $BACKEND
 
 RUN apt-get install -y python3 
-RUN apt-get install python3-pip 
+RUN apt-get install -y python3-pip 
 RUN pip install -r requirements.txt
 
 WORKDIR $FRONTEND
