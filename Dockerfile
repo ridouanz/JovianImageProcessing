@@ -2,11 +2,6 @@ FROM ubuntu:latest
 
 COPY  . /JovianImageProcessing
 
-RUN pwd
-RUN ls -al .
-RUN ls -al /JovianImageProcessing/BACKEND/
-RUN cat /JovianImageProcessing/BACKEND/requirements.txt
-
 ENV BACKEND=/JovianImageProcessing/BACKEND
 ENV FRONTEND=/JovianImageProcessing/FRONTEND
 
@@ -17,14 +12,12 @@ WORKDIR $BACKEND
 RUN apt-get install -y python3 
 RUN apt-get install -y python3-pip 
 RUN pwd
-RUN pip install -r /JovianImageProcessing/BACKEND/requirements.txt
+RUN pip install -r requirements.txt
 
 WORKDIR $FRONTEND
 
-RUN pwd
-
-RUN apt-get install –y apache2 
-RUN apt-get install –y apache2-utils 
+RUN apt-get install -y apache2 
+RUN apt-get install -y apache2-utils 
 RUN apt-get clean
 
 EXPOSE 80
