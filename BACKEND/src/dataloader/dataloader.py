@@ -4,18 +4,19 @@ import urllib.request as urllib
 import numpy as np
 from ..utils import Utils
 from urllib.request import Request, urlopen
+from fastapi import File, UploadFile
 
 
 class ImageLoader():
-    def __init__(self, id : str = None, img: np.array = None):
+    def __init__(self, id : str = None, img: bytes = None):
         """
-        This is the Image Loader class which loads the image from either the NASA website (from its ID) or from a local file (img). Hence, id and img should not be "not None" in the same time.
+        This is the Image Loader class which loads the image from either the NASA website (from its ID) or from a local file in bytes format (img). Hence, id and img should not be "not None" in the same time.
 
         Parameters
         ----------
 
         id (str) : choice 1 - the image ID found in NASA Juno website.
-        img (np.array) : choice 2 - the image in np.array.
+        img (bytes) : choice 2 - the image in bytes format.
 
         id should be in ' ' not in " " 
         """
@@ -28,7 +29,7 @@ class ImageLoader():
     def load(self):
         
         '''
-        This function returns a np.array img either using the image ID from the NASA Juno website or in default from the upload file. 
+        This function returns a np.array img either using the image ID from the NASA Juno website or in default from the upload file in bytes format. 
         '''
         if self.id is not None:
             req = Request(
@@ -39,4 +40,7 @@ class ImageLoader():
             img = Utils().decode(img_coded=webpage)
             return img
         elif self.img is not None:
-            return self.img
+            img = Utils().decode(img_coded=self.img)
+
+            return img
+

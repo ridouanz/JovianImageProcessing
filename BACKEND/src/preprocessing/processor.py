@@ -4,7 +4,7 @@ import cv2 as cv
 from scipy.ndimage import median_filter
 
 class ImageProcessor(ImageLoader):
-    def __init__(self, id: str = None, img : np.array = None):
+    def __init__(self, id: str = None, img : bytes = None):
         super().__init__(id, img)
         self.image = self.load()
     
