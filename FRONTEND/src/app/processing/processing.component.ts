@@ -25,7 +25,7 @@ export class ProcessingComponent implements OnInit {
   setProcessImgProperties() {
 
     this.list = this.sharedService.getImagesTrustedLinks();
-    this.process_old = this.list[1];
+    this.process_old = this.list[2];
     this.process_new = this.list[3];
   }
 

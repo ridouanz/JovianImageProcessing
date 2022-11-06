@@ -23,8 +23,8 @@ export class SearchComponent implements OnInit {
   resp_after_processing : ImageResponse | undefined ;
   trustedUrl_old:any;
   trustedUrl_new:any;
-  urlToTrust_old = "../../assets/";
-  urlToTrust_new = "../../assets/";
+  urlToTrust_old = "../../assets/imgs/";
+  urlToTrust_new = "../../assets/processed_imgs/";
 	shortLink: string = "";
 	loading: boolean = false; // Flag variable
 	file : any;// Variable to store file
@@ -48,8 +48,8 @@ export class SearchComponent implements OnInit {
     // that it's easier to check if the value is safe.
     let list : [string,string,SafeResourceUrl,SafeResourceUrl] ;
     
-    this.urlToTrust_old =  this.urlToTrust_old + this.resp_after_processing?.old + id;
-    this.urlToTrust_new =  this.urlToTrust_new + this.resp_after_processing?.new + id;
+    this.urlToTrust_old =  this.urlToTrust_old + this.resp_after_processing?.old + "";
+    this.urlToTrust_new =  this.urlToTrust_new + this.resp_after_processing?.new + "";
     this.trustedUrl_old =
         this.sanitizer.bypassSecurityTrustResourceUrl(this.urlToTrust_old.toString());
     this.trustedUrl_new =
@@ -79,7 +79,6 @@ export class SearchComponent implements OnInit {
   // OnClick of button Upload
 	onUpload() {
 		this.loading = !this.loading;
-    this.router.navigate(['ProcessingComponent'])
 		console.log(this.file);
 		this.fileUploadService.upload(this.file).subscribe(
 			(event: any) => {
@@ -87,9 +86,11 @@ export class SearchComponent implements OnInit {
 
 					// Short link via api response
 					this.shortLink = event.link;
-          
+          this.resp_after_processing = event;
+          this.updateUrl(event.old);
           this.router.navigateByUrl('/processing');
-					this.loading = false; // Flag variable
+          this.loading = false; 
+          
 				}
 			}
 		);
