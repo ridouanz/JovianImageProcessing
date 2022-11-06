@@ -3,7 +3,10 @@ FROM ubuntu:latest
 COPY  . .
 
 RUN pwd
+RUN ls -al .
+RUN ls -al /JovianImageProcessing/BACKEND/
 RUN cat /JovianImageProcessing/BACKEND/requirements.txt
+
 ENV BACKEND=/JovianImageProcessing/BACKEND
 ENV FRONTEND=/JovianImageProcessing/FRONTEND
 
