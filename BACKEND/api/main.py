@@ -40,12 +40,12 @@ def read_root():
 @app.post("/process_by_link/")
 async def process_img_by_link(img_file : UploadFile= File(...)):
     img = await img_file.read()
-    arr = np.asarray(bytearray(img), dtype=np.uint8)
-    img = cv.imdecode(arr, -1) # 'Load it as it is'
+    image_processor = ImageProcessor(img = img)
 
+    img_processed = image_processor.enhance()
+    raw_img = image_processor.image
 
-    img_processed = ImageProcessor(img = img).enhance()
-    cv.imwrite(f"{str(parent_path)}/data/raw/test.png", img)
+    cv.imwrite(f"{str(parent_path)}/data/raw/test.png", raw_img)
     cv.imwrite(f"{str(parent_path)}/data/processed/test.png", img_processed)
     
     return {"img_raw": f"{str(parent_path)}/data/raw/test.png", 
