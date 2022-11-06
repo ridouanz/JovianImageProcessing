@@ -24,7 +24,8 @@ export class ParentService {
    let trustedUrl_new =
         this.sanitizer.bypassSecurityTrustResourceUrl(this.urlToTrust_new.toString());  
 
-    this.updateImagesInComponents([trustedUrl_old,trustedUrl_new]);
+    trustedLinks = [trustedUrl_old,trustedUrl_new];
+    this.updateImagesInComponents(trustedLinks);
      
   }
 
@@ -32,7 +33,7 @@ export class ParentService {
       this.list = list;
   } 
 
-  
+
   getImagesTrustedLinks() {
     return this.list;
   }
