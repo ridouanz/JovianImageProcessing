@@ -8,7 +8,7 @@ import { BrowserModule, DomSanitizer, SafeResourceUrl } from '@angular/platform-
 export class ParentService {
 
    list : any;
-   urlToTrust_old = "../../assets/imgs/";
+  urlToTrust_old = "../../assets/imgs/";
   urlToTrust_new = "../../assets/processed_imgs/";
 
   constructor(private sanitizer: DomSanitizer) { }
@@ -16,15 +16,16 @@ export class ParentService {
 
   updateUrls(resp_after_processing : ImageResponse | undefined) {
     let trustedLinks : [SafeResourceUrl,SafeResourceUrl] ;
-    this.urlToTrust_old =  this.urlToTrust_old + resp_after_processing?.old + "";
-    this.urlToTrust_new =  this.urlToTrust_new + resp_after_processing?.new + "";
+   
+    let urlToTrust_old_tmp =  this.urlToTrust_old + resp_after_processing?.old + "";
+    let urlToTrust_new_tmp =  this.urlToTrust_new + resp_after_processing?.new + "";
 
     let trustedUrl_old =
-        this.sanitizer.bypassSecurityTrustResourceUrl(this.urlToTrust_old.toString());
+        this.sanitizer.bypassSecurityTrustResourceUrl(urlToTrust_old_tmp.toString());
    let trustedUrl_new =
-        this.sanitizer.bypassSecurityTrustResourceUrl(this.urlToTrust_new.toString());  
-
-    this.updateImagesInComponents([trustedUrl_old,trustedUrl_new]);
+        this.sanitizer.bypassSecurityTrustResourceUrl(urlToTrust_new_tmp.toString());  
+        trustedLinks= [trustedUrl_old,trustedUrl_new];
+    this.updateImagesInComponents(trustedLinks);
      
   }
 

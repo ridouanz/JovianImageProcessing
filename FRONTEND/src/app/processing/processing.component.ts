@@ -26,7 +26,7 @@ export class ProcessingComponent implements OnInit {
    process_old : SafeResourceUrl | undefined ;
    process_new : SafeResourceUrl | undefined;
 
-   loading: boolean = false; // Flag variable
+   loadingProcess: boolean = false; // Flag variable
 
   constructor(private sharedService : ParentService, private processingService : ProcessFormService) { 
   }
@@ -45,17 +45,14 @@ export class ProcessingComponent implements OnInit {
   }
 
   onSubmit() {
-    this.loading = !this.loading;
+    this.loadingProcess = !this.loadingProcess;
    
      this.processingService.regenerate(this.processingOptions).subscribe(data => { 
      if (typeof (data) === 'object') {
      this.resp_after_processing = data;
      this.sharedService.updateUrls(this.resp_after_processing);
-    // this.router.navigateByUrl('/processing');
-    
-     this.loading = false; 
+     this.loadingProcess = false; 
      this.setProcessImgProperties();
-   
    }});
   }
 
