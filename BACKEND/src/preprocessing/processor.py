@@ -19,9 +19,9 @@ class ImageProcessor(ImageLoader):
 
         img_result = np.zeros(self.image.shape)
 
-        img_result[:,:,0] = clahe.apply(self.img[:,:,0])
-        img_result[:,:,1] = clahe.apply(self.img[:,:,1])
-        img_result[:,:,2] = clahe.apply(self.img[:,:,2])
+        img_result[:,:,0] = clahe.apply(self.image[:,:,0])
+        img_result[:,:,1] = clahe.apply(self.image[:,:,1])
+        img_result[:,:,2] = clahe.apply(self.image[:,:,2])
 
 
         #img_result = median_filter(img_result.astype('uint8'), 3)
@@ -39,10 +39,10 @@ class ImageProcessor(ImageLoader):
 
         clahe = cv.createCLAHE(clipLimit = clipLimit, tileGridSize = (window, window))
 
-        img_result = np.zeros(self.img.shape)
-        img_result[:,:,0] = clahe.apply(self.img[:,:,0])
-        img_result[:,:,1] = clahe.apply(self.img[:,:,1])
-        img_result[:,:,2] = clahe.apply(self.img[:,:,2])
+        img_result = np.zeros(self.image.shape)
+        img_result[:,:,0] = clahe.apply(self.image[:,:,0])
+        img_result[:,:,1] = clahe.apply(self.image[:,:,1])
+        img_result[:,:,2] = clahe.apply(self.image[:,:,2])
 
         #img_result = median_filter(img_result.astype('uint8'), 3)
         img_result = img_result.astype("uint8")
