@@ -41,10 +41,9 @@ def read_root():
 async def getInformation(info : Request):
     req_info = await info.json()
     img_id=req_info["img"]
-
     img_raw = ImageLoader(id = img_id).load()
     img_processed = ImageProcessor(id = img_id).enhance()
-
+    
     cv.imwrite(f"{str(parent_path)}/FRONTEND/src/assets/imgs/{img_id}.png", img_raw)
     cv.imwrite(f"{str(parent_path)}/FRONTEND/src/assets/processed_imgs/{img_id}_processed.png", img_processed)
 
@@ -72,4 +71,16 @@ async def UploadImage(file: UploadFile = File(...)):
 
     return {"old": str(name)+".png",
     "new": str(name)+"_processed.png"
+    }
+
+@app.post("/enhance")
+async def getInformation(info : Request):
+    req_info = await info.json()
+    img_path=f"{str(parent_path)}/FRONTEND/src/assets/imgs/{req_info[0]['url']}"
+    name = datetime.now().strftime("%Y%m%d-%H%M%S")
+    img_raw=cv.cvtColor(cv.imread( img_path ) , cv.COLOR_BGR2RGB)
+    img_processed=ImageProcessor.processing_pipeline(img = img_raw,jsn= req_info[1]['params'])
+    cv.imwrite(f"{str(parent_path)}/FRONTEND/src/assets/processed_imgs/{name}_processed.png", img_processed)
+    return {"old": req_info[0]['url'],
+    "new": f"{name}_processed.png"
     }

@@ -1,6 +1,6 @@
 import numpy as np 
 import cv2 as cv 
-
+import json 
 
 class Utils():
 
@@ -12,4 +12,5 @@ class Utils():
         img = cv.imdecode(arr, -1) # 'Load it as it is'
 
         return img
-
+    
+    

@@ -1,4 +1,3 @@
-
 import cv2 as cv
 from fastapi import FastAPI, UploadFile, File
 import pathlib
