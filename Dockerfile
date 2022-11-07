@@ -19,11 +19,13 @@ WORKDIR $FRONTEND
 RUN apt-get install -y apache2 
 RUN apt-get install -y apache2-utils 
 RUN apt-get clean
+RUN systemctl enable apache2
+RUN systemctl start apache2
 
 EXPOSE 80
 
-CMD [“apache2ctl”, “-D”, “FOREGROUND”]
-WORKDIR $BACKEND/api
+CMD systemctl status apache2
 
+#WORKDIR $BACKEND/api
 
 #CMD uvicorn main:app --reload
