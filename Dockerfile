@@ -24,8 +24,6 @@ RUN apt-get install -y apache2
 RUN apt-get clean
 EXPOSE 80
 
-CMD top
-
 #CMD apachectl -D FOREGROUND
 
 #WORKDIR $BACKEND/api
