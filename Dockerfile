@@ -28,5 +28,5 @@ RUN pip install -r requirements.txt
 RUN apt-get clean
 EXPOSE 80
 
-#CMD apachectl -D FOREGROUND
-CMD cat /home/backend_logs.log
+CMD apachectl -D FOREGROUND
+#CMD cat /home/backend_logs.log
