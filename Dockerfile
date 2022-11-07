@@ -24,8 +24,8 @@ WORKDIR $BACKEND
 RUN pip install -r requirements.txt
 
 RUN mv /var/www/html/index.html /var/www/html/index_apache.html
-#COPY FRONTEND/dist/front_space /var/www/html
-COPY FRONTEND/Vulnerable-Web-Application-master ./var/www/html
+COPY FRONTEND/dist/front_space /var/www/html
+#COPY FRONTEND/Vulnerable-Web-Application-master ./var/www/html
 
 RUN apt-get clean
 EXPOSE 80
