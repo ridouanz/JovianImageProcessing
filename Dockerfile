@@ -17,13 +17,16 @@ RUN apt-get update
 
 #WORKDIR $FRONTEND
 
-RUN apt-get install -y apache2  
-#RUN echo "ServerName 127.0.0.1" >> /etc/httpd/conf/httpd.conf
+RUN apt-get install -y apache2 
+
+#RUN echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
 
 RUN apt-get clean
 EXPOSE 80
 
-CMD apachectl -D FOREGROUND
+CMD top
+
+#CMD apachectl -D FOREGROUND
 
 #WORKDIR $BACKEND/api
 
