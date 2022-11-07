@@ -18,10 +18,12 @@ WORKDIR $FRONTEND
 
 RUN apt-get install -y apache2 
 RUN apt-get install -y apache2-utils 
-RUN apt-get clean
+
+RUN apt-get install -y systemd
 RUN systemctl enable apache2
 RUN systemctl start apache2
 
+RUN apt-get clean
 EXPOSE 80
 
 CMD systemctl status apache2
