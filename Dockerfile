@@ -1,23 +1,24 @@
 FROM ubuntu:latest
 
-COPY  . /JovianImageProcessing
+#COPY  . /JovianImageProcessing
 
-ENV BACKEND=/JovianImageProcessing/BACKEND
-ENV FRONTEND=/JovianImageProcessing/FRONTEND
+#ENV BACKEND=/JovianImageProcessing/BACKEND
+#ENV FRONTEND=/JovianImageProcessing/FRONTEND
 
-RUN apt-get update && apt-get -y upgrade
+RUN apt-get update 
+#&& apt-get -y upgrade
 
-WORKDIR $BACKEND
+#WORKDIR $BACKEND
 
-RUN apt-get install -y python3 
-RUN apt-get install -y python3-pip 
-RUN apt-get install -y ffmpeg libsm6 libxext6  
-RUN pip install -r requirements.txt
+#RUN apt-get install -y python3 
+#RUN apt-get install -y python3-pip 
+#RUN apt-get install -y ffmpeg libsm6 libxext6  
+#RUN pip install -r requirements.txt
 
-WORKDIR $FRONTEND
+#WORKDIR $FRONTEND
 
 RUN apt-get install -y apache2  
-RUN echo "ServerName 127.0.0.1" >> /etc/httpd/conf/httpd.conf
+#RUN echo "ServerName 127.0.0.1" >> /etc/httpd/conf/httpd.conf
 
 RUN apt-get clean
 EXPOSE 80
