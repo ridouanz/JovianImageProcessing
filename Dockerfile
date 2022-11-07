@@ -21,7 +21,7 @@ RUN pwd
 RUN ls -al
 
 RUN cp /home/JovianImageProcessing/BACKEND/backend-service.sh /usr/local/bin
-RUN sudo chmod +x /usr/local/bin/backend-service.sh
+RUN chmod +x /usr/local/bin/backend-service.sh
 RUN cp /home/JovianImageProcessing/BACKEND/backend-service.service /etc/systemd/system
 RUN chmod 640 /etc/systemd/system/backend-service.service
 RUN systemctl enable backend-service.service
