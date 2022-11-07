@@ -31,7 +31,7 @@ RUN pip install -r requirements.txt
 
 #WORKDIR $FRONTEND
 
-#COPY FRONTEND /var/www/html
+#COPY FRONTEND/front_space /var/www/html
 
 RUN apt-get clean
 EXPOSE 80
@@ -41,4 +41,4 @@ EXPOSE 80
 WORKDIR $BACKEND/api
 
 
-CMD cat /home/backend-logs.log
+CMD cat /home/backend_logs.log
