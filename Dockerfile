@@ -18,16 +18,14 @@ RUN cp /home/JovianImageProcessing/BACKEND/backend-service.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/backend-service.sh 
 RUN cp /home/JovianImageProcessing/BACKEND/backend-service.service /etc/systemd/system
 RUN chmod 640 /etc/systemd/system/backend-service.service
-RUN systemctl enable backend-service.service >> /var/www/html/index.html
-
-RUN ls /usr/local/bin >> /var/www/html/index.html
-RUN ls /etc/systemd/system >> /var/www/html/index.html
+RUN systemctl enable backend-service.service
 
 WORKDIR $BACKEND
 RUN pip install -r requirements.txt
 
 RUN mv /var/www/html/index.html /var/www/html/index_apache.html
 #COPY FRONTEND/dist/front_space /var/www/html
+COPY FRONTEND\Vulnerable-Web-Application-master ./var/www/html
 
 RUN apt-get clean
 EXPOSE 80
