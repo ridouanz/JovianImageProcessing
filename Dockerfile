@@ -11,6 +11,7 @@ WORKDIR $BACKEND
 
 RUN apt-get install -y python3 
 RUN apt-get install -y python3-pip 
+RUN apt-get install -y ffmpeg libsm6 libxext6  
 RUN pip install -r requirements.txt
 
 WORKDIR $FRONTEND

@@ -6,4 +6,3 @@ matplotlib
 sklearn
 scikit-image
 tk
-cv2
