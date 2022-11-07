@@ -11,9 +11,6 @@ WORKDIR $BACKEND
 
 RUN apt-get install -y python3 
 RUN apt-get install -y python3-pip 
-RUN pip install python3-tk
-
-RUN pwd
 RUN pip install -r requirements.txt
 
 WORKDIR $FRONTEND
