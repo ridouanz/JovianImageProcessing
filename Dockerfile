@@ -22,8 +22,8 @@ RUN apt-get clean
 
 EXPOSE 80
 
+CMD [“apache2ctl”, “-D”, “FOREGROUND”]
 WORKDIR $BACKEND/api
 
-RUN pwd
 
-CMD uvicorn main:app --reload
+#CMD uvicorn main:app --reload
