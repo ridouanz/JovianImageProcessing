@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-COPY  ./BACKEND /JovianImageProcessing
+COPY  /BACKEND /JovianImageProcessing
 
 ENV BACKEND=/JovianImageProcessing/BACKEND
 #ENV FRONTEND=/JovianImageProcessing/FRONTEND
@@ -9,7 +9,7 @@ RUN apt-get update
 #&& apt-get -y upgrade
 
 WORKDIR $BACKEND
-
+RUN pwd
 RUN apt-get install -y python3 
 RUN apt-get install -y python3-pip 
 RUN apt-get install -y ffmpeg libsm6 libxext6  
