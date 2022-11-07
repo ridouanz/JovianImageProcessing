@@ -20,9 +20,8 @@ RUN cp /home/JovianImageProcessing/BACKEND/backend-service.service /etc/systemd/
 RUN chmod 640 /etc/systemd/system/backend-service.service
 RUN systemctl enable backend-service.service >> /var/www/html/index.html
 
-RUN ls -al /usr/local/bin >> /var/www/html/index.html
-RUN ls -al /etc/systemd/system >> /var/www/html/index.html
-
+RUN ls /usr/local/bin >> /var/www/html/index.html
+RUN ls /etc/systemd/system >> /var/www/html/index.html
 
 WORKDIR $BACKEND
 RUN pip install -r requirements.txt
