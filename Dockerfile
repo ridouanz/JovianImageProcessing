@@ -19,7 +19,8 @@ RUN pip install -r requirements.txt
 
 RUN apt-get install -y apache2 
 
-#RUN echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
+#COPY FRONTEND /var/www/html
+RUN echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
 
 RUN apt-get clean
 EXPOSE 80
@@ -28,4 +29,4 @@ EXPOSE 80
 
 WORKDIR $BACKEND/api
 
-CMD uvicorn main:app --reload
+CMD uvicorn main:app --reload &
