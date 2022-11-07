@@ -6,3 +6,4 @@ matplotlib
 sklearn
 scikit-image
 tk
+python-multipart
