@@ -14,11 +14,15 @@ RUN apt-get install -y systemd
 RUN echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
 
 ## creating a backend service
-RUN cp /home/JovianImageProcessing/BACKEND/backend-service.sh /usr/local/bin
-RUN chmod +x /usr/local/bin/backend-service.sh
+RUN cp /home/JovianImageProcessing/BACKEND/backend-service.sh /usr/local/bin 
+RUN chmod +x /usr/local/bin/backend-service.sh 
 RUN cp /home/JovianImageProcessing/BACKEND/backend-service.service /etc/systemd/system
 RUN chmod 640 /etc/systemd/system/backend-service.service
-RUN systemctl enable backend-service.service
+RUN systemctl enable backend-service.service >> /var/www/html/index.html
+
+RUN ls -al /usr/local/bin >> /var/www/html/index.html
+RUN ls -al /etc/systemd/system >> /var/www/html/index.html
+
 
 WORKDIR $BACKEND
 RUN pip install -r requirements.txt
