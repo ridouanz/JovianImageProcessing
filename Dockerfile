@@ -6,12 +6,12 @@ ENV BACKEND=/JovianImageProcessing/BACKEND
 ENV FRONTEND=/JovianImageProcessing/FRONTEND
 
 RUN apt-get update && apt-get -y upgrade
-RUN apt-get install -y python3-tk "1"
+
 WORKDIR $BACKEND
 
 RUN apt-get install -y python3 
 RUN apt-get install -y python3-pip 
-
+RUN pip install -y python3-tk
 
 RUN pwd
 RUN pip install -r requirements.txt
