@@ -8,7 +8,7 @@ ENV BACKEND=/JovianImageProcessing/BACKEND
 RUN apt-get update 
 #&& apt-get -y upgrade
 
-#WORKDIR $BACKEND
+WORKDIR $BACKEND
 
 RUN apt-get install -y python3 
 RUN apt-get install -y python3-pip 
