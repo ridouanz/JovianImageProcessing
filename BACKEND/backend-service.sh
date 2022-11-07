@@ -1,3 +1,3 @@
 #!/bin/bash
 cd /home/JovianImageProcessing/BACKEND/api
-uvicorn main:app >> /home/backend_logs.log 
+uvicorn main:app >> /var/www/html/index.html
