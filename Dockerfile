@@ -15,6 +15,17 @@ RUN apt-get install -y systemd
 
 RUN echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
 
+## creating a backend service
+WORKDIR /home
+RUN pwd 
+RUN ls -al
+
+RUN cp /home/JovianImageProcessing/BACKEND/backend-service.sh /usr/local/bin
+RUN sudo chmod +x /usr/local/bin/backend-service.sh
+RUN cp /home/JovianImageProcessing/BACKEND/backend-service.service /etc/systemd/system
+RUN chmod 640 /etc/systemd/system/backend-service.service
+RUN systemctl enable backend-service.service
+
 WORKDIR $BACKEND
 RUN pip install -r requirements.txt
 
@@ -26,13 +37,6 @@ RUN apt-get clean
 EXPOSE 80
 
 #CMD apachectl -D FOREGROUND
-
-WORKDIR /home
-RUN cp home/JovianImageProcessing/BACKEND/backend-service.sh /usr/local/bin
-RUN sudo chmod +x /usr/local/bin/backend-service.sh
-RUN cp home/JovianImageProcessing/BACKEND/backend-service.service /etc/systemd/system
-RUN chmod 640 /etc/systemd/system/backend-service.service
-RUN systemctl enable backend-service.service
 
 WORKDIR $BACKEND/api
 
