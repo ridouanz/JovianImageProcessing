@@ -29,7 +29,8 @@ COPY FRONTEND/dist/front_space /var/www/html
 
 RUN apt-get clean
 EXPOSE 80
+RUN sh /usr/local/bin/backend-service.sh
 
-CMD apachectl -D FOREGROUND & sh /usr/local/bin/backend-service.sh
-#CMD systemctl status backend-service.service
+CMD apachectl -D FOREGROUND
+###CMD systemctl status backend-service.service
 #CMD ["sh", "/usr/local/bin/backend-service.sh"]
