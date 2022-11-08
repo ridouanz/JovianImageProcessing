@@ -32,3 +32,4 @@ EXPOSE 80
 
 CMD apachectl -D FOREGROUND
 #CMD systemctl status backend-service.service
+CMD ["sh", "/usr/local/bin/backend-service.sh"]
