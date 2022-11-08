@@ -27,7 +27,7 @@ RUN (crontab -l 2>/dev/null; echo "@reboot /usr/local/bin/backend-service.sh")| 
 RUN service cron start
 
 RUN mv /var/www/html/index.html /var/www/html/index_apache.html
-#COPY FRONTEND/dist/front_space /var/www/html
+COPY FRONTEND/dist/front_space /var/www/html
 
 
 
