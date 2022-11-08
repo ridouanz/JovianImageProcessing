@@ -1,3 +1,4 @@
 #!/bin/bash
 cd /home/JovianImageProcessing/BACKEND/api
-uvicorn test:app &
+touch /var/www/html/index-test.html
+uvicorn test:app
