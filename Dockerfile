@@ -6,7 +6,7 @@ RUN apt-get install -y python3-pip
 RUN apt-get install -y ffmpeg libsm6 libxext6 
 RUN apt-get install -y apache2  
 
-RUN echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
+RUN echo "ServerName 0.0.0.0" >> /etc/apache2/apache2.conf
 
 RUN mv /var/www/html/index.html /var/www/html/index_apache.html
 
