@@ -7,3 +7,4 @@ sklearn
 scikit-image
 tk
 python-multipart
+gunicorn
