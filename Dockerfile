@@ -18,10 +18,11 @@ RUN pip install -r /BACKEND/requirements.txt
 RUN apt-get clean
 
 EXPOSE 80
+EXPOSE 8000
 
 WORKDIR /BACKEND/api
 
-##CMD apachectl -D FOREGROUND
-CMD gunicorn -w 4 -k uvicorn.workers.UvicornWorker test:app
+RUN gunicorn -w 4 -k uvicorn.workers.UvicornWorker test:app
 
-EXPOSE 8000
+CMD apachectl -D FOREGROUND
+#CMD gunicorn -w 4 -k uvicorn.workers.UvicornWorker test:app
