@@ -15,9 +15,9 @@ COPY ./BACKEND ./BACKEND
 
 RUN apt-get clean
 
-#EXPOSE 80
+EXPOSE 8000
 
 WORKDIR /BACKEND/api
 
 ##CMD apachectl -D FOREGROUND
-CMD ["uvicorn", "test:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "test:app", "--port", "8000"]
