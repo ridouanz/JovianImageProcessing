@@ -22,7 +22,5 @@ EXPOSE 8000
 
 WORKDIR /BACKEND/api
 
-RUN gunicorn -w 4 -k uvicorn.workers.UvicornWorker test:app
-
-CMD apachectl -D FOREGROUND
-#CMD gunicorn -w 4 -k uvicorn.workers.UvicornWorker test:app
+#CMD apachectl -D FOREGROUND
+CMD gunicorn -w 4 -k uvicorn.workers.UvicornWorker test:app
