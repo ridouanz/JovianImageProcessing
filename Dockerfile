@@ -9,7 +9,7 @@ RUN apt-get install -y apache2
 
 ##RUN apt-get install -y cron
 
-##RUN echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
+RUN echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
 
 ## creating a backend service
 ##RUN cp /home/JovianImageProcessing/BACKEND/backend-service.sh /usr/local/bin 
