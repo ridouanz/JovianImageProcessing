@@ -15,14 +15,15 @@ COPY ./BACKEND /BACKEND
 
 RUN pip install -r /BACKEND/requirements.txt
 
-RUN service apache2 start
-
 RUN apt-get clean
 
 EXPOSE 8000
 EXPOSE 80
 
-WORKDIR /BACKEND/api
+WORKDIR /BACKEND
 
 #CMD apachectl -D FOREGROUND
-CMD gunicorn -b 0.0.0.0:8000 -k uvicorn.workers.UvicornWorker test:app 
+#CMD gunicorn -b 0.0.0.0:8000 -k uvicorn.workers.UvicornWorker test:app 
+
+ENTRYPOINT [ "/bin/sh" ]
+CMD ["./run_all.sh"]
