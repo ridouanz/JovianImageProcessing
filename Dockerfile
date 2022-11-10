@@ -17,12 +17,12 @@ RUN pip install -r /BACKEND/requirements.txt
 
 RUN apt-get clean
 
-EXPOSE 80
 EXPOSE 8000
+EXPOSE 80
 
 WORKDIR /BACKEND/api
 
 #CMD apachectl -D FOREGROUND
 CMD gunicorn -b 0.0.0.0:8000 -k uvicorn.workers.UvicornWorker test:app
 
-EXPOSE 80
+#EXPOSE 80
