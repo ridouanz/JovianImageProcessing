@@ -13,6 +13,8 @@ RUN mv /var/www/html/index.html /var/www/html/index_apache.html
 COPY ./FRONTEND/dist/front_space /var/www/html
 COPY ./BACKEND /BACKEND
 
+RUN chmod +x /BACKEND/run_all.sh
+
 RUN pip install -r /BACKEND/requirements.txt
 
 RUN apt-get clean
