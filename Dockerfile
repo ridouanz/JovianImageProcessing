@@ -19,7 +19,7 @@ RUN pip install -r /BACKEND/requirements.txt
 
 RUN apt-get clean
 
-#EXPOSE 8000
+EXPOSE 8000
 EXPOSE 80
 
 WORKDIR /BACKEND/api
