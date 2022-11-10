@@ -23,4 +23,6 @@ EXPOSE 8000
 WORKDIR /BACKEND/api
 
 #CMD apachectl -D FOREGROUND
-CMD gunicorn -w 4 -b 0.0.0.0:8000 -k uvicorn.workers.UvicornWorker test:app
+CMD gunicorn -b 0.0.0.0:8000 -k uvicorn.workers.UvicornWorker test:app
+
+EXPOSE 80
