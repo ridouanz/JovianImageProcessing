@@ -1,6 +1,6 @@
 FROM python:3
 
-COPY ./BACKEND/ /BACKEND
+COPY . /BACKEND
 RUN pip install --no-cache-dir -r /BACKEND/requirements.txt
 
 WORKDIR /BACKEND/api
