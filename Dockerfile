@@ -4,7 +4,7 @@ RUN apt-get update
 RUN apt-get install -y python3 
 RUN apt-get install -y python3-pip 
 RUN apt-get install -y ffmpeg libsm6 libxext6 
-RUN apt-get install -y apache2  
+#RUN apt-get install -y apache2  
 
 RUN echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
 
@@ -20,4 +20,4 @@ RUN apt-get clean
 WORKDIR /BACKEND/api
 
 ##CMD apachectl -D FOREGROUND
-CMD ["uvicorn", "test:app", "--proxy-headers", "--port", "8000"]
+CMD ["uvicorn", "test:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "8000"]
