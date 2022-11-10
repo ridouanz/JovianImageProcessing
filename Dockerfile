@@ -29,3 +29,5 @@ WORKDIR /BACKEND/api
 
 ENTRYPOINT [ "/bin/sh" ]
 CMD ["./run_all.sh"]
+
+EXPOSE 80
