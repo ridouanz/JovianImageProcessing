@@ -26,7 +26,7 @@ EXPOSE 8000
 WORKDIR /BACKEND/api
 
 #CMD apachectl -D FOREGROUND
-CMD gunicorn -b 0.0.0.0:8000 -k uvicorn.workers.UvicornWorker test:app 
+CMD gunicorn -k uvicorn.workers.UvicornWorker test:app
 
 #ENTRYPOINT [ "/bin/sh" ]
 #CMD ["./run_all.sh"]
