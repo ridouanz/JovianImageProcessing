@@ -9,6 +9,8 @@ from fastapi import FastAPI, File, Request
 from datetime import datetime
 import numpy as np
 
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 parent_path = pathlib.Path(os.path.realpath(__file__)).parent.parent
 sys.path.append(str(parent_path))
@@ -35,6 +37,11 @@ app.add_middleware(
 @app.get("/")
 def read_root():
     return {"msg": "Hello :)"}
+
+
+@app.get("/front")
+def read_index():
+    return FileResponse("./index.html")
 
 
 @app.post("/process")
