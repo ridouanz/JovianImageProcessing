@@ -22,7 +22,7 @@ parent_path = pathlib.Path(os.path.realpath(__file__)).parent.parent.parent
 sys.path.append(str(parent_path))
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
-app.mount("/assets", StaticFiles(directory="assets"), name="assets")
+app.mount("/static/assets", StaticFiles(directory="static/assets"), name="assets")
 
 #fix the Cross-Origin Resource Sharing with angular
 origins = [
